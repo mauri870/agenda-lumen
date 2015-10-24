@@ -1,6 +1,4 @@
-# Created by https://www.gitignore.io/api/hpstorm,phpstorm,composer,node,bower
-
-#!! ERROR: hpstorm is undefined. Use list command to see defined gitignore types !!#
+# Created by https://www.gitignore.io/api/phpstorm,composer,laravel,node,bower
 
 ### PhpStorm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio
@@ -60,6 +58,13 @@ vendor/
 # composer.lock
 
 
+### Laravel ###
+/bootstrap/compiled.php
+.env.*.php
+.env.php
+.env
+
+
 ### Node ###
 # Logs
 logs
@@ -96,4 +101,3 @@ bower_components
 .bower-cache
 .bower-registry
 .bower-tmp
-
