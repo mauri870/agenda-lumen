@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace Agenda\Http\Middleware;
 
 use Closure;
 

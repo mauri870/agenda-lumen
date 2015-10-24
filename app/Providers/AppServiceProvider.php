@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Agenda\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
