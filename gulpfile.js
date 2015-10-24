@@ -5,10 +5,10 @@ elixir(function(mix){
     mix.copy(bowerDir + 'bootstrap/fonts', 'public/fonts')
        .copy(bowerDir + 'font-awesome/fonts', 'public/fonts')
 
-        .copy(bowerDir + 'bootstrap/dist/bootstrap.js', 'resources/assets/js')
+        .copy(bowerDir + 'bootstrap/dist/js/bootstrap.js', 'resources/assets/js')
         .copy(bowerDir + 'jquery/dist/jquery.js', 'resources/assets/js')
 
-        .script([
+        .scripts([
             'jquery.js',
             'bootstrap.js',
         ],'public/js/scripts.js')
