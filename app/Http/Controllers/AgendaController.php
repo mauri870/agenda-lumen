@@ -13,6 +13,6 @@ class AgendaController extends Controller
 {
     public function index()
     {
-        return view('layouts.master');
+        return view('agenda');
     }
 }
