@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,15 +18,112 @@
     <![endif]-->
 </head>
 <body>
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><i class="fa fa-tty"></i> Agenda</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Pesquisar contato">
+                </div>
+                <button type="submit" class="btn btn-default">Buscar</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Link</a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
 <div class="container">
+    {{-- Letters --}}
     <div class="row text-center">
-        <div class="col-12">
-            <h1>Hello, world!</h1>
+        <div class="col-md-12">
+            <ul class="list-inline">
+                <li>
+                    @foreach(range('A','Z') as $char)
+                        <a href="">
+                            <button class="btn btn-primary btn-xs">{{ $char }}</button>
+                        </a>
+                    @endforeach
+                </li>
+            </ul>
         </div>
     </div>
+
+    {{-- Body --}}
+    @yield('content')
 </div>
+<!-- /container -->
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="{{ url('js/scripts.js') }}"></script>
+
+{{-- Navbar --}}
+<script>
+    $(function () {
+        // Remove Search if user Resets Form or hits Escape!
+        $('body, .navbar-collapse form[role="search"] button[type="reset"]').on('click keyup', function (event) {
+            if (event.which == 27 && $('.navbar-collapse form[role="search"]').hasClass('active') ||
+                    $(event.currentTarget).attr('type') == 'reset') {
+                closeSearch();
+            }
+        });
+
+        function closeSearch() {
+            var $form = $('.navbar-collapse form[role="search"].active')
+            $form.find('input').val('');
+            $form.removeClass('active');
+        }
+
+        // Show Search if form is not active // event.preventDefault() is important, this prevents the form from submitting
+        $(document).on('click', '.navbar-collapse form[role="search"]:not(.active) button[type="submit"]', function (event) {
+            event.preventDefault();
+            var $form = $(this).closest('form'),
+                    $input = $form.find('input');
+            $form.addClass('active');
+            $input.focus();
+
+        });
+    });
+</script>
+<script>
+    $('.nav a').on('click', function () {
+        $('.btn-navbar').click(); //bootstrap 2.x
+        $('.navbar-toggle').click() //bootstrap 3.x by Richard
+    });
+</script>
 </body>
 </html>
