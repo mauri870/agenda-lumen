@@ -21,6 +21,14 @@ class Telefone extends Model
         'ddd',
     ];
 
+    /**
+     *
+     */
+    public function getNumeroAttribute()
+    {
+        return "{$this->codPais} ({$this->ddd}) {$this->telefone}";
+    }
+
 
     /**
      * A phone belongs to a person

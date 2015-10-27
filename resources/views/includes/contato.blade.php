@@ -8,7 +8,7 @@
     <table class="table table-hover">
         @foreach($pessoa->telefones as $telefone)
             <tr>
-                <td>{{ $telefone->codPais }} ({{ $telefone->ddd }}) {{ $telefone->telefone }} </td>
+                <td>{{ $telefone->numero }} </td>
                 <td>
                     <a href="">
                         <button class="btn btn-danger btn-xs" data-toggle="tooltip" title="Apagar"><i class="fa fa-times"></i></button>
