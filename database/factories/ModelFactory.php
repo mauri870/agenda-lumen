@@ -11,11 +11,29 @@
 |
 */
 
-$factory->define(App\User::class, function ($faker) {
+/*$factory->define(App\User::class, function ($faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->email,
         'password' => str_random(10),
         'remember_token' => str_random(10),
+    ];
+});*/
+
+$factory->define(Agenda\Pessoa::class, function ($faker) {
+    return [
+        'nome' => $faker->name,
+        'apelido' => $faker->name,
+        'email' => $faker->email,
+        'endereco' => $faker->address,
+    ];
+});
+
+$factory->define(Agenda\Telefone::class, function ($faker) {
+    return [
+        'pessoa_id' => Agenda\Pessoa::all()->random()->id,
+        'telefone' => $faker->phoneNumber,
+        'codPais' => rand(10,99),
+        'ddd' => rand(10,99),
     ];
 });
