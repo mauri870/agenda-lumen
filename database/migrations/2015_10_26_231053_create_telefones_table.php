@@ -18,7 +18,7 @@ class CreateTelefonesTable extends Migration
             $table->increments('id');
             $table->string('descricao');
             $table->integer('pessoa_id')->unsigned();
-            $table->foreign('pessoa_id')->references('id')->on('pessoas');
+            $table->foreign('pessoa_id')->references('id')->on('pessoas')->onDelete('cascade');
             $table->string('telefone');
             $table->smallInteger('codPais')->unsigned();
             $table->smallInteger('ddd')->unsigned();
