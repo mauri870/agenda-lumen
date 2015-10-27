@@ -135,5 +135,10 @@
         $('.navbar-toggle').click() //bootstrap 3.x by Richard
     });
 </script>
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 </body>
 </html>
