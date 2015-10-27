@@ -74,7 +74,7 @@
             <ul class="list-inline">
                 <li>
                     @foreach(range('A','Z') as $char)
-                        <a href="">
+                        <a href="{{ route('home.letter',['letter'=>$char]) }}">
                             <button class="btn btn-primary btn-xs">{{ $char }}</button>
                         </a>
                     @endforeach
@@ -82,6 +82,16 @@
             </ul>
         </div>
     </div>
+    <div class="row text-left">
+        <div class="col-md-12">
+            <a href="">
+                <button class="btn btn-primary">
+                    <i class="fa fa-plus"></i> Novo Contato
+                </button>
+            </a>
+        </div>
+    </div>
+    <br>
 
     {{-- Body --}}
     @yield('content')
