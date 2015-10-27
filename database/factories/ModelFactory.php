@@ -32,6 +32,7 @@ $factory->define(Agenda\Pessoa::class, function ($faker) {
 $factory->define(Agenda\Telefone::class, function ($faker) {
     return [
         'pessoa_id' => Agenda\Pessoa::all()->random()->id,
+        'descricao' => $faker->word,
         'telefone' => $faker->phoneNumber,
         'codPais' => rand(10,99),
         'ddd' => rand(10,99),

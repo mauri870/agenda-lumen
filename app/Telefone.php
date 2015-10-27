@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 class Telefone extends Model
 {
     protected $fillable = [
+        'descricao',
         'pessoa_id',
         'telefone',
         'codPais',
