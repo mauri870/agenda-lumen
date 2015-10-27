@@ -14,3 +14,5 @@
 $app->get('/',['as'=>'home','uses'=>'AgendaController@index']);
 
 $app->get('/{letter}',['as'=>'home.letter','uses'=>'AgendaController@letter']);
+
+$app->post('/search',['as'=>'home.search','uses'=>'AgendaController@search']);
