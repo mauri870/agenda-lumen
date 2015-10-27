@@ -9,10 +9,23 @@
 namespace Agenda\Http\Controllers;
 
 
+use Agenda\Pessoa;
+use Agenda\Telefone;
+
 class AgendaController extends Controller
 {
     public function index()
     {
-        return view('agenda');
+
+        $pessoas = Pessoa::where('apelido','like','A%')->paginate(5);
+        return view('agenda')
+            ->with('pessoas',$pessoas);
+    }
+
+    public function letter($letter)
+    {
+        $pessoas = Pessoa::where('apelido','like',$letter.'%')->paginate(5);
+        return view('agenda')
+            ->with('pessoas',$pessoas);
     }
 }
