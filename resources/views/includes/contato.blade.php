@@ -1,6 +1,17 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">{{ $pessoa->apelido }}</h3>
+        <h3 class="panel-title">
+            @if($pessoa->sexo == "M")
+            <i class="fa fa-male"></i>
+            @elseif("F")
+                <i class="fa fa-female"></i>
+            @endif
+            {{ $pessoa->apelido }}
+            <span class="pull-right">
+                <button class="btn btn-warning btn-xs" data-toggle="tooltip" title="Editar"><i class="fa fa-edit"></i></button>
+                <button class="btn btn-danger btn-xs" data-toggle="tooltip" title="Apagar"><i class="fa fa-times"></i></button>
+            </span>
+        </h3>
     </div>
     <div class="panel-body">
         <h1>{{ $pessoa->nome }}</h1>
@@ -12,7 +23,6 @@
                 <td>
                     <a href="">
                         <button class="btn btn-danger btn-xs" data-toggle="tooltip" title="Apagar"><i class="fa fa-times"></i></button>
-                        <button class="btn btn-warning btn-xs" data-toggle="tooltip" title="Editar"><i class="fa fa-edit"></i></button>
                     </a>
                 </td>
             </tr>
