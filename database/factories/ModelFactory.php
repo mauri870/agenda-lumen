@@ -23,6 +23,7 @@
 $factory->define(Agenda\Pessoa::class, function ($faker) {
     return [
         'nome' => $faker->name,
+        'sexo' => rand(0, 1) ? 'F' : 'M',
         'apelido' => $faker->name,
         'email' => $faker->email,
         'endereco' => $faker->address,
