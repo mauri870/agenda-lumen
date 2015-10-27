@@ -12,9 +12,14 @@ namespace Agenda\Http\Controllers;
 use Agenda\Pessoa;
 use Agenda\Telefone;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class AgendaController extends Controller
 {
+    /**
+     * @return $this
+     */
     public function index()
     {
 
@@ -23,6 +28,10 @@ class AgendaController extends Controller
             ->with('pessoas',$pessoas);
     }
 
+    /**
+     * @param $letter
+     * @return $this
+     */
     public function letter($letter)
     {
         $pessoas = Pessoa::where('apelido','like',$letter.'%')->paginate(5);
@@ -30,11 +39,48 @@ class AgendaController extends Controller
             ->with('pessoas',$pessoas);
     }
 
+    /**
+     * @param Request $request
+     * @return $this
+     */
     public function search(Request $request)
     {
         $word = $request->input('pesquisa');
         $pessoas = Pessoa::where('apelido','like','%'.$word.'%')->orWhere('nome','like','%'.$word.'%')->paginate(5);
         return view('search')
             ->with('pessoas',$pessoas);
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function deletePerson($id)
+    {
+        $person = Pessoa::find($id);
+        if($person == null){
+            throw new NotFoundHttpException;
+        }
+
+        $person->delete();
+        return redirect()->to(route('home'));
+
+
+    }
+
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function deletePhone($id)
+    {
+        $phone = Telefone::find($id);
+        if($phone == null){
+            throw new NotFoundHttpException;
+        }
+
+        $phone->delete();
+        return redirect()->to(route('home'));
     }
 }
