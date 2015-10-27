@@ -9,7 +9,24 @@
 namespace Agenda;
 
 
-class Telefone
-{
+use Illuminate\Database\Eloquent\Model;
 
+class Telefone extends Model
+{
+    protected $fillable = [
+        'pessoa_id',
+        'telefone',
+        'codPais',
+        'ddd',
+    ];
+
+
+    /**
+     * A phone belongs to a person
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function pessoa()
+    {
+        return $this->belongsTo(Pessoa::class);
+    }
 }

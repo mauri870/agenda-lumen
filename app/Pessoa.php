@@ -9,7 +9,26 @@
 namespace Agenda;
 
 
-class Pessoa
+use Illuminate\Database\Eloquent\Model;
+
+class Pessoa extends Model
 {
+    protected $fillable = [
+        'nome',
+        'apelido',
+        'email',
+        'endereco',
+    ];
+
+
+    /**
+     * A person hasMany phones
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function telefones()
+    {
+        return $this->hasMany(Telefone::class);
+    }
+
 
 }
