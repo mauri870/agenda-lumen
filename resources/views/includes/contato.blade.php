@@ -1,4 +1,8 @@
-<div class="panel panel-default">
+@if($pessoa->sexo == "M")
+    <div class="panel panel-info">
+@elseif("F")
+    <div class="panel panel-danger">
+@endif
     <div class="panel-heading">
         <h3 class="panel-title">
             @if($pessoa->sexo == "M")
@@ -15,17 +19,7 @@
     </div>
     <div class="panel-body">
         <h1>{{ $pessoa->nome }}</h1>
+        <a href=""><button class="btn btn-info btn-xs pull-left"><i class="fa fa-plus"></i> Novo telefone</button></a>
     </div>
-    <table class="table table-hover">
-        @foreach($pessoa->telefones as $telefone)
-            <tr>
-                <td>{{ $telefone->numero }} </td>
-                <td>
-                    <a href="{{ route('home.delete.phone',['id'=>$telefone->id]) }}">
-                        <button class="btn btn-danger btn-xs" data-toggle="tooltip" title="Apagar"><i class="fa fa-times"></i></button>
-                    </a>
-                </td>
-            </tr>
-        @endforeach
-    </table>
+    @include('includes.telefone',['telefones'=>$pessoa->telefones])
 </div>

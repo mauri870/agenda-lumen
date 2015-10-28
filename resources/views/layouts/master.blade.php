@@ -73,7 +73,7 @@
         <div class="col-md-12">
             <ul class="list-inline">
                 <li>
-                    @foreach(range('A','Z') as $char)
+                    @foreach($letters as $char)
                         <a href="{{ route('home.letter',['letter'=>$char]) }}">
                             <button class="btn btn-primary btn-xs">{{ $char }}</button>
                         </a>

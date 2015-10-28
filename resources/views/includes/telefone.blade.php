@@ -1,7 +1,12 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: mauri870
- * Date: 28/10/15
- * Time: 19:49
- */
+<table class="table table-hover">
+    @foreach($telefones as $telefone)
+        <tr>
+            <td>{{ $telefone->numero }} </td>
+            <td>
+                <a href="{{ route('home.delete.phone',['id'=>$telefone->id]) }}">
+                    <button class="btn btn-danger btn-xs" data-toggle="tooltip" title="Apagar"><i class="fa fa-times"></i></button>
+                </a>
+            </td>
+        </tr>
+    @endforeach
+</table>
