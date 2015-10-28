@@ -26,3 +26,13 @@ $app->get('/delete/person/{id}',['as'=>'home.delete.person','uses'=>'AgendaContr
 //Delete phone
 $app->get('/delete/phone/{id}',['as'=>'home.delete.phone','uses'=>'AgendaController@deletePhone']);
 
+//Create Person
+$app->get('/create/person',['as'=>'home.create.person','uses'=>'AgendaController@createPerson']);
+
+$app->post('/create/person',['as'=>'home.create.person.post','uses'=>'AgendaController@createPersonPost']);
+
+//Create Phone
+$app->get('/create/phone',['as'=>'home.create.phone','uses'=>'AgendaController@createPhone']);
+
+$app->post('/create/phone',['as'=>'home.create.phone.post','uses'=>'AgendaController@createPhonePost']);
+
