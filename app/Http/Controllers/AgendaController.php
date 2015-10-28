@@ -12,7 +12,6 @@ namespace Agenda\Http\Controllers;
 use Agenda\Pessoa;
 use Agenda\Telefone;
 use Illuminate\Http\Request;
-use Laracasts\Flash\Flash;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class AgendaController extends Controller
@@ -24,8 +23,8 @@ class AgendaController extends Controller
     {
 
         $pessoas = Pessoa::where('apelido','like','A%')->paginate(5);
-        return view('agenda')
-            ->with('pessoas',$pessoas);
+        $letters = $this->getLetters();
+        return view('agenda',compact('pessoas','letters'));
     }
 
     /**
@@ -35,8 +34,8 @@ class AgendaController extends Controller
     public function letter($letter)
     {
         $pessoas = Pessoa::where('apelido','like',$letter.'%')->paginate(5);
-        return view('agenda')
-            ->with('pessoas',$pessoas);
+        $letters = $this->getLetters();
+        return view('agenda',compact('pessoas','letters'));
     }
 
     /**
@@ -47,8 +46,8 @@ class AgendaController extends Controller
     {
         $word = $request->input('pesquisa');
         $pessoas = Pessoa::where('apelido','like','%'.$word.'%')->orWhere('nome','like','%'.$word.'%')->paginate(5);
-        return view('search')
-            ->with('pessoas',$pessoas);
+        $letters = $this->getLetters();
+        return view('search',compact('pessoas','letters'));
     }
 
     /**
@@ -82,5 +81,17 @@ class AgendaController extends Controller
 
         $phone->delete();
         return redirect()->to(route('home'));
+    }
+
+    public function getLetters()
+    {
+        $letters = [];
+        foreach(Pessoa::all() as $pessoa){
+            $letters[] = strtoupper(substr($pessoa->apelido,0,1));
+        }
+
+        sort($letters);
+
+        return array_unique($letters);
     }
 }
