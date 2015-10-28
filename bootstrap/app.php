@@ -78,8 +78,13 @@ $app->singleton(
 |
 */
 
- /*$app->register(Agenda\Providers\AppServiceProvider::class);
- $app->register(Agenda\Providers\EventServiceProvider::class);*/
+ $app->register(Agenda\Providers\AppServiceProvider::class);
+ $app->register(Agenda\Providers\EventServiceProvider::class);
+$app->register('Collective\Html\HtmlServiceProvider');
+
+class_alias('Collective\Html\HtmlFacade', 'Html');
+
+class_alias('Collective\Html\FormFacade', 'Form');
 
 /*
 |--------------------------------------------------------------------------
