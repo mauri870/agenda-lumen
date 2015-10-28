@@ -8,11 +8,20 @@ elixir(function(mix){
         .copy(bowerDir + 'bootstrap/dist/js/bootstrap.js', 'resources/assets/js')
         .copy(bowerDir + 'jquery/dist/jquery.js', 'resources/assets/js')
 
+        //Sweetalert
+        .copy(bowerDir + 'sweetalert/dist/sweetalert.css', 'resources/assets/css')
+        .copy(bowerDir + 'sweetalert/dist/sweetalert.min.js', 'resources/assets/js')
+
         .scripts([
             'jquery.js',
             'bootstrap.js',
+            'sweetalert.min.js',
             'custom.js',
         ],'public/js/scripts.js')
 
-        .less('app.less');
+        .less('app.less')
+
+        .styles([
+            'sweetalert.css',
+        ],'public/css/custom.min.css');
 });

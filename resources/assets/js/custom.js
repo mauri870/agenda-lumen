@@ -35,3 +35,20 @@ $('.nav a').on('click', function () {
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });
+
+/*Sweetalert Modal*/
+function deleteModal(url){
+    swal({
+        title: "Voce tem certeza?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Sim, tenho!",
+        closeOnConfirm: false,
+        closeOnCancel: true,
+    }, function(isConfirm){
+        if(isConfirm){
+            window.location.href = url;
+        }
+    });
+}
