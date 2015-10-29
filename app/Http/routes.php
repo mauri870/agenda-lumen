@@ -15,7 +15,7 @@
 $app->get('/',['as'=>'home','uses'=>'AgendaController@index']);
 
 //Search letters
-$app->get('/{letter}',['as'=>'home.letter','uses'=>'AgendaController@letter']);
+$app->get('/letter/{letter}',['as'=>'home.letter','uses'=>'AgendaController@letter']);
 
 //Search Persons
 $app->post('/search',['as'=>'home.search','uses'=>'AgendaController@search']);
