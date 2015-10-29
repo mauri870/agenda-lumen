@@ -83,6 +83,9 @@ class AgendaController extends Controller
         return redirect()->to(route('home'));
     }
 
+    /**
+     * @return array
+     */
     public function getLetters()
     {
         $letters = [];
@@ -93,5 +96,42 @@ class AgendaController extends Controller
         sort($letters);
 
         return array_unique($letters);
+    }
+
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function createPerson()
+    {
+        $letters = $this->getLetters();
+        return view('person.create',compact('letters'));
+    }
+
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function createPersonPost(Request $request)
+    {
+        $new = Pessoa::create($request->all());
+        $letter = strtoupper(substr($new->apelido,0,1));
+        return redirect(route('home.letter',['letter'=>$letter]));
+    }
+
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function createPhone()
+    {
+        $letters = $this->getLetters();
+        return view('person.create',compact('letters'));
+    }
+
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function createPhonePost()
+    {
+        $letters = $this->getLetters();
+        return view('person.create',compact('letters'));
     }
 }
