@@ -132,9 +132,10 @@ class AgendaController extends Controller
      */
     public function editPersonPost($id,Request $request)
     {
-        $new = Pessoa::
-        create($request->all());
-        $letter = strtoupper(substr($new->apelido,0,1));
+        $person = Pessoa::find($id);
+        $person->fill($request->all());
+        $person->save();
+        $letter = strtoupper(substr($person->apelido,0,1));
         return redirect(route('home.letter',['letter'=>$letter]));
     }
 
