@@ -12,7 +12,7 @@
             @endif
             {{ $pessoa->apelido }}
             <span class="pull-right">
-                <a href=""><button class="btn btn-warning btn-xs" data-toggle="tooltip" title="Editar"><i class="fa fa-edit"></i></button></a>
+                <a href="{{ route('home.edit.person',['id'=>$pessoa->id]) }}"><button class="btn btn-warning btn-xs" data-toggle="tooltip" title="Editar"><i class="fa fa-edit"></i></button></a>
                 <a href="#" onclick="deleteModal('{{ route('home.delete.person',['id'=>$pessoa->id]) }}')"><button class="btn btn-danger btn-xs" data-toggle="tooltip" title="Apagar"><i class="fa fa-times"></i></button></a>
             </span>
         </h3>
