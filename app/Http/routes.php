@@ -32,9 +32,9 @@ $app->get('/create/person',['as'=>'home.create.person','uses'=>'AgendaController
 $app->post('/create/person',['as'=>'home.create.person.post','uses'=>'AgendaController@createPersonPost']);
 
 //Edit Person
-$app->get('/edit/person',['as'=>'home.edit.person','uses'=>'AgendaController@editPerson']);
+$app->get('/edit/person/{id}',['as'=>'home.edit.person','uses'=>'AgendaController@editPerson']);
 
-$app->post('/edit/person',['as'=>'home.edit.person.post','uses'=>'AgendaController@editPersonPost']);
+$app->post('/edit/person/{id}',['as'=>'home.edit.person.post','uses'=>'AgendaController@editPersonPost']);
 
 //Create Phone
 $app->get('/create/phone',['as'=>'home.create.phone','uses'=>'AgendaController@createPhone']);
