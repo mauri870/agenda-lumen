@@ -6,7 +6,7 @@
     <h3>Editar Pessoa</h3>
     <div class="row text-center">
         <div class="col-md-6 text-left">
-            {!! Form::model($id,['url'=>'edit/person/']) !!}
+         {!! Form::model($id,['url'=>'edit/person/']) !!}
             @include('person.form')
             <button class="btn btn-success">Cadastrar</button>
         </div>
