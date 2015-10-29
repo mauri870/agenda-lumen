@@ -120,6 +120,27 @@ class AgendaController extends Controller
     /**
      * @return \Illuminate\View\View
      */
+    public function editPerson($id)
+    {
+        $person = Pessoa::find($id);
+        $letters = $this->getLetters();
+        return view('person.edit',compact('letters','person'));
+    }
+
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function editPersonPost($id,Request $request)
+    {
+        $new = Pessoa::
+        create($request->all());
+        $letter = strtoupper(substr($new->apelido,0,1));
+        return redirect(route('home.letter',['letter'=>$letter]));
+    }
+
+    /**
+     * @return \Illuminate\View\View
+     */
     public function createPhone()
     {
         $letters = $this->getLetters();
